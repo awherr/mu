@@ -11,7 +11,8 @@ struct _Mu : std::enable_shared_from_this<_Mu>{
 
 // creation
 Mu mu(){
-    return std::make_shared<_Mu>();
+    static auto p = Mu::create();
+    return p;
 }
 
 // aggregatation 
@@ -22,7 +23,9 @@ Mu operator<<(Mu uni, Mu e){
 }
 
 Mu operator<<(Mu uni, const std::vector<float> & v){
-    return uni << std::make_shared<_Mu>(v);
+    auto ret = Mu();
+    ret->m_data = v;
+    return uni << ret;
 }
 
 Mu operator>>(Mu uni, std::vector<float> & v){
@@ -30,7 +33,28 @@ Mu operator>>(Mu uni, std::vector<float> & v){
     return uni;
 }
 
-Mu operator-(Mu a, Mu b){
+Mu join(Mu a, Mu b){
     a->m_peers.push_back(b);
     b->m_peers.push_back(a);
+    return a;
+}
+
+Mu join(Mu a, std::list<Mu> v){
+    for(auto b: v){
+        join(a, b);
+    }
+    return a;
+}
+
+Mu chain(std::list<Mu> v){
+    Mu t, f;
+    for(auto a: v){
+        if(t){
+            join(a, t);
+        }else{
+            f = a;
+        }
+        t = a;
+    }
+    return f;
 }

@@ -4,3 +4,6 @@
 [submodule "third_party/vtk"]
 	path = third_party/vtk
 	url = https://gitlab.kitware.com/vtk/vtk.git
+[submodule "third_party/qt5"]
+	path = third_party/qt5
+	url = https://github.com/qt/qt5.git

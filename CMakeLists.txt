@@ -11,7 +11,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/libmu/include
     ${CMAKE_SOURCE_DIR}/libviewmu/include
 )
-
+add_subdirectory(third_party)
 add_subdirectory(libviewmu)
 add_subdirectory(libmu)
 add_subdirectory(simu)

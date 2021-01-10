@@ -1,3 +1,6 @@
 [submodule "third_party/cli11"]
 	path = third_party/cli11
 	url = https://github.com/CLIUtils/CLI11.git
+[submodule "third_party/vtk"]
+	path = third_party/vtk
+	url = https://gitlab.kitware.com/vtk/vtk.git

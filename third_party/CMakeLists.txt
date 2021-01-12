@@ -12,7 +12,7 @@ ExternalProject_Add( qt5_build
     INSTALL_DIR "${QT5_INSTALL_PREFIX}"
     TMP_DIR "${CMAKE_CURRENT_BINARY_DIR}/qt5/tmp"
     CONFIGURE_COMMAND 
-      cp -r ${CMAKE_CURRENT_SOURCE_DIR}/qt5 ${CMAKE_CURRENT_BINARY_DIR} && cd ${CMAKE_CURRENT_BINARY_DIR}/qt5 && ./configure -opensource -confirm-license 
+      cp -r ${CMAKE_CURRENT_SOURCE_DIR}/qt5 ${CMAKE_CURRENT_BINARY_DIR} && cd ${CMAKE_CURRENT_BINARY_DIR}/qt5 && ./configure -prefix ${QT5_INSTALL_PREFIX} -opensource -confirm-license 
     BUILD_COMMAND make -j8
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${QT5_INSTALL_PREFIX}
                -DCMAKE_BUILD_TYPE=Release
